@@ -1,6 +1,9 @@
 name: Checks
 
-on: push
+on:
+  pull_request:
+  push:
+    branches: [main]
 
 jobs:
   backend:
@@ -25,3 +28,12 @@ jobs:
 
       - name: Check formatting
         run: npm run format:check
+
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v7
+
+      - name: Build the production image
+        run: docker build --target production -t notes-app .
