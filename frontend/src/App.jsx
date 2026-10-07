@@ -35,7 +35,7 @@ function App() {
   return (
     <div>
       <h1>My notes</h1>
-
+      <p>You have {count} notes.</p>
       <form onSubmit={submit}>
         <input
           value={text}
